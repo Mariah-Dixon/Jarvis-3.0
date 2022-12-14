@@ -5,12 +5,17 @@ paths = {
     'notes': "/System/Applications/Notes.app/Contents/MacOS/Notes",
     'discord': "/Applications/Discord.app/Contents/MacOS/Discord",
     'calculator': "/System/Applications/Calculator.app/Contents/MacOS/Calculator",
-    'photo_booth': "/System/Applications/Photo Booth.app/Contents/MacOS/Photo Booth"
+    'photo_booth': "/System/Applications/Photo Booth.app/Contents/MacOS/Photo Booth",
+    'Apple Music': "/System/Applications/Music.app/Contents/MacOS/Music"
 }
 
 
 def open_notes():
     os.system(paths['notes'])
+
+
+def open_music():
+    os.system(paths['music'])
 
 
 def open_discord():

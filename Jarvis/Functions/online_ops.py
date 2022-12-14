@@ -18,10 +18,22 @@ def find_my_ip():
     return ip_address["ip"]
 
 
-def search_on_wikipedia(query):
-    results = wikipedia.summary(query, sentences=2)
-    return results
+#def search_on_wikipedia(query):
+    #results = wikipedia.summary(query, sentences=2)
+    #return results
 
+def search_on_wikipedia(keyword = ''):
+    searchResults = wikipedia.search(keyword)
+    if not searchResults:
+        print('No wikipedia result')
+        return 'No result recieved'
+    try: 
+        wikiPage = wikipedia.page(searchResults[0])
+    except wikipedia.DisambiguationError as error:
+        wikiPage = wikipedia.page(error.options[0])
+    print(wikiPage.title)
+    wikiSummary = str(wikiPage.summary)
+    return wikiSummary
 
 def play_on_youtube(video):
     kit.playonyt(video)
@@ -60,7 +72,7 @@ def get_latest_news():
     articles = res["articles"]
     for article in articles:
         news_headlines.append(article["title"])
-    return news_headlines[:5]
+    return news_headlines
 
 
 def get_weather_report(city):
@@ -79,7 +91,7 @@ def get_trending_movies():
     results = res["results"]
     for r in results:
         trending_movies.append(r["original_title"])
-    return trending_movies[:5]
+    return trending_movies
 
 
 def get_random_joke():
